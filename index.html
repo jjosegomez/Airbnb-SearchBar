@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AirBnb</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    
+    <!-- Shows the search bar -->
+    <section id="search-container">
+      <div id="input-container">
+        <input id="location-input" 
+               placeholder="Where are you going?"></input>
+        <button id="search-button">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </section>
+    <div id="search-container-spacer"></div>
+
+    <!-- Container for results shown below the search -->
+    <section id="results">
+
+      <!-- Container for the filter dropdowns -->
+      <div id="filter-container" class="hidden">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle mx-2" type="button" id="type-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Type of place
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="type-dropdown">
+            <li><a class="dropdown-item" onclick="_toggleType('entire-place')">
+              <i class="entire-place bi bi-plus-square-fill"></i>
+              <i class="unchecked-entire-place hide bi bi-square"></i><span>Entire Place</span></a>
+            </li>
+
+            <li><a class="dropdown-item" onclick="_toggleType('private-room')">
+              <i class="private-room bi bi-plus-square-fill"></i>
+              <i class="unchecked-private-room hide bi bi-square"></i><span>Private Room</span></a>
+            </li>
+              
+            <li><a class="dropdown-item" onclick="_toggleType('shared-room')">
+              <i class="shared-room bi bi-plus-square-fill"></i>
+              <i class="unchecked-shared-room hide bi bi-square"></i> <span>Shared Room</span></a>
+            </li>   
+          </ul>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle me-2" type="button" id="type-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Min Price
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="type-dropdown">
+            <label for="min-price-range" class="form-label">Min Nightly Price</label>
+						<output class="text-end">$0</output>
+            <input type="range" class="form-range" id="min-price-range" min="0" max="1000" value="0" oninput="this.previousElementSibling.value = '$' + this.value">
+						
+						<div class="range-bound-label-container row">
+							<div class="col-6">
+								<p class="range-bound-label range-bound-label__lower">$0</p>
+							</div>
+							<div class="col-6">
+								<p class="range-bound-label range-bound-label__upper">$1,000</p>
+							</div>
+						</div>
+          </ul>
+        </div>
+
+        <div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="type-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+					Max Price
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="type-dropdown">
+						<label for="max-price-range" class="form-label">Max Nightly Price</label>
+						<output class="text-end">$1,000</output>
+						<input type="range" class="form-range" id="max-price-range" min="0" max="1000" step="1" value="1000" oninput="this.previousElementSibling.value = '$' + this.value">
+						<div class="range-bound-label-container row">
+						<div class="col-6">
+							<p class="range-bound-label range-bound-label__lower">$0</p>
+						</div>
+						<div class="col-6">
+							<p class="range-bound-label range-bound-label__upper">$1,000</p>
+						</div>
+					</div>
+					</ul>
+        </div>  
+      </div>
+
+      <div id="listing-container">
+      </div>
+    </section>
+    <script src="https://unpkg.com/esprima@~4.0/dist/esprima.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://bit.ly/3HbMbbF"></script>
+    <script src="listings.js"></script>
+    <script src="provided.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
